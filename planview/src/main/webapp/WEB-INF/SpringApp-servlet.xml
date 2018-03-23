@@ -19,4 +19,32 @@
    
       
   <mvc:annotation-driven />
+  
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.postgresql.Driver " />
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/PlanviewDB" />
+		<property name="username" value="postgres" />
+		<property name="password" value="admin" />
+	</bean>
+  
+  
+  <bean id="hibernate4AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.journaldev.spring.model.Person</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
