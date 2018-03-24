@@ -1,7 +1,9 @@
 package com.spring.planview.dao;
 
+import org.springframework.http.ResponseEntity;
+
 import com.spring.planview.model.UserRegistration;
 
 public interface RegistrationDAO {
-	public UserRegistration saveUser(UserRegistration registration);
+	public ResponseEntity<UserRegistration> saveUser(UserRegistration registration);
 }

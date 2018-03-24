@@ -1,38 +1,24 @@
 package com.spring.planview.controller;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import com.spring.planview.model.UserRegistration;
+import com.spring.planview.service.LoginService;
+
+@RestController
 public class LoginController {
+	
 	@Autowired
-	SessionFactory sessionFactory;
-	
-	
-	
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+	LoginService loginService;
 
-
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-
-
-	@RequestMapping(value="/signin" , method=RequestMethod.POST,consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE})
-	@ResponseBody
-	public boolean  checkUser(@RequestParam("email") String email){
-
-	 return true;
+	@RequestMapping(value="/signin" , method=RequestMethod.GET,consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE})
+	public UserRegistration  getUserByEmail(@RequestParam("email") String email){
+		return loginService.getUserByEmail(email);
 	}
 	
 	

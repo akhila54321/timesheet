@@ -1,7 +1,10 @@
 package com.spring.planview.dao;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.spring.planview.model.UserRegistration;
@@ -21,8 +24,17 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 
 	@Override
-	public UserRegistration saveUser(UserRegistration registration) {
-		return registration;
+	public ResponseEntity<UserRegistration> saveUser(UserRegistration registration) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Integer saved = (Integer) session.save(registration);
+		session.getTransaction().commit();
+		session.close();
+		
+		if(saved == 1)
+			return new ResponseEntity<UserRegistration>(HttpStatus.OK);
+		else
+			return new ResponseEntity<UserRegistration>(HttpStatus.CONFLICT);
 	}
 
 }

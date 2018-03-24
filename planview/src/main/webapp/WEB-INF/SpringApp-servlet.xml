@@ -12,7 +12,7 @@
 
   	<context:component-scan base-package = "com.spring.planview.controller" />
   
-    <mvc:resources mapping = "/*" location = "/WEB-INF/" />
+   <!--  <mvc:resources mapping = "/*" location = "/WEB-INF/" /> -->
      
       
   <mvc:annotation-driven />
@@ -26,19 +26,25 @@
 		<property name="password" value="admin" />
 	</bean>
   
+  <bean id="registrationService" class="com.spring.planview.service.RegistrationServiceImpl"></bean>
+  
+  <bean id="registrationDao" class="com.spring.planview.dao.RegistrationDAOImpl"></bean>
+  
+  <bean id="loginService" class="com.spring.planview.service.LoginServiceImpl"></bean>
+  
+  <bean id="loginDao" class="com.spring.planview.dao.LoginDAOImpl"></bean>
   
   <bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.spring.planview.model.UserRgistration</value>
+				<value>com.spring.planview.model.UserRegistration</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect
-				</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>

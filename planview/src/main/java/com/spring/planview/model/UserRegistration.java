@@ -1,4 +1,5 @@
 package com.spring.planview.model;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,25 +8,42 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_registration")
-
 public class UserRegistration {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id ;
-	private String Emloyeeemail;
+	private Integer id;
+	@Column(name = "employee_id")
+	private Integer empId ;
+	@Column(name = "employee_name")
+	private String name;
+	private String email;
 	private String password;
-	public int getId() {
+	
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getEmloyeeemail() {
-		return Emloyeeemail;
+	public Integer getEmpId() {
+		return empId;
 	}
-	public void setEmloyeeemail(String emloyeeemail) {
-		Emloyeeemail = emloyeeemail;
+	public void setEmpId(Integer empId) {
+		this.empId = empId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
@@ -34,10 +52,4 @@ public class UserRegistration {
 		this.password = password;
 	}
 	
-
-	
-	
-
-
-
 }
