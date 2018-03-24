@@ -2,14 +2,23 @@ package com.spring.planview.controller;
 
 public class Person {
 
-	private String name;
+	private String email;
+	private String password;
 
-	public String getName() {
-		return name;
+	public String getpassword() {
+		return password;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
