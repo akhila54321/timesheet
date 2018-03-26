@@ -1,0 +1,32 @@
+.form-group-registration{
+  display: inline-table;
+  margin: 25px;
+  background-color:grey;
+  height: 200px;
+  width:200px;
+  padding: 20px;
+
+  
+  
+}
+.btn{
+  background-color:blue;
+  color: white;
+  text-align: right;
+}
+.heading-registration{
+  color: black;
+    text-shadow: 2px 2px 4px #000000;
+    
+    
+
+}
+
+.Registration{
+  
+  border: 1px solid black; 
+  height: 500px;
+  width: 500px;
+  text-align: center;
+  background-color:LightGray;
+}

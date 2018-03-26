@@ -1,0 +1,26 @@
+#container {
+  width:600px;
+  background-color: gainsboro;
+  height:300px;
+  border-radius: 40px;
+}
+  #heading{
+    width:80%;
+    margin-left:50px;
+  }
+
+.form-control{
+  width:300px;
+  float:right;
+  margin-top: 20px;
+
+}
+#button-align{
+  width: 300px;
+  float:right;
+  margin-top: 20px;
+}
+.btn-block{
+  width:50%;
+  border-radius: 0px;
+}
