@@ -12,7 +12,7 @@
 
   	<context:component-scan base-package = "com.spring.planview.controller" />
   
-   <!--  <mvc:resources mapping = "/*" location = "/WEB-INF/" /> -->
+    <mvc:resources mapping = "/pages/*" location = "/WEB-INF/pages/" /> 
      
       
   <mvc:annotation-driven />
@@ -34,12 +34,18 @@
   
   <bean id="loginDao" class="com.spring.planview.dao.LoginDAOImpl"></bean>
   
+  <bean id="timesheetService" class="com.spring.planview.service.TimesheetServiceImpl"></bean>
+  
+  <bean id="timesheetDao" class="com.spring.planview.dao.TimesheetDAOImpl"></bean>
+  
   <bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
 				<value>com.spring.planview.model.UserRegistration</value>
+				<value>com.spring.planview.model.Timesheet</value>
+				<value>com.spring.planview.model.Roles</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

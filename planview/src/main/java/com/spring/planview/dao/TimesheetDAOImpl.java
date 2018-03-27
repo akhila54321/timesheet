@@ -7,10 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-import com.spring.planview.model.UserRegistration;
+import com.spring.planview.model.Timesheet;
 
 @Repository
-public class RegistrationDAOImpl implements RegistrationDAO {
+public class TimesheetDAOImpl implements TimesheetDAO {
 	
 	@Autowired
 	SessionFactory sessionFactory;
@@ -24,17 +24,17 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 
 	@Override
-	public ResponseEntity<UserRegistration> saveUser(UserRegistration registration) {
+	public ResponseEntity<Timesheet> saveUser(Timesheet timesheetData) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Integer saved = (Integer) session.save(registration);
+		Integer saved = (Integer) session.save(timesheetData);
+		session.getTransaction().commit();
+		session.close();
 		
-		if(saved == 1){
-			session.getTransaction().commit();
-			session.close();
-			return new ResponseEntity<UserRegistration>(HttpStatus.OK);
-		}else
-			return new ResponseEntity<UserRegistration>(HttpStatus.CONFLICT);
+		if(saved == 1)
+			return new ResponseEntity<Timesheet>(HttpStatus.OK);
+		else
+			return new ResponseEntity<Timesheet>(HttpStatus.CONFLICT);
 	}
 
 }
