@@ -4,28 +4,25 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans  
     http://www.springframework.org/schema/beans/spring-beans.xsd  
     http://www.springframework.org/schema/security  
-    http://www.springframework.org/schema/security/spring-security.xsd">  
-    
-    
-    <http security="none" pattern="/index"/> 
-     <http security="none" pattern="/register"/> 
-      <http security="none" pattern="/timesheet"/> 
-     
-     
-    <http use-expressions="true">  
-        <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />  
-    
-      <form-login login-page="/index"  />
-   
-   
-    </http>  
-    
-    
-    <authentication-manager >  
-      <authentication-provider >  
-        <user-service>  
-        <user name="admin" password="1234" authorities="hasRole('ROLE_ADMIN')" />  
-        </user-service>  
-      </authentication-provider>  
-    </authentication-manager>  
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+	<http security="none" pattern="/index" />
+	<http security="none" pattern="/register" />
+	<http security="none" pattern="/timesheet" />
+	<http security="none" pattern="/update" />
+	<http security="none" pattern="/delete" />
+	<http use-expressions="true">
+		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+		<form-login login-page="/index" />
+	</http>
+
+
+	<authentication-manager>
+		<authentication-provider ref="customAuthenticationProvider">
+		</authentication-provider>
+	</authentication-manager>
+
+	<beans:bean id="customAuthenticationProvider"
+		class="com.spring.planview.authentication.UsernamePasswordAuthProvider"></beans:bean>
 </beans:beans> 

@@ -17,11 +17,18 @@ public class Timesheet {
 		private Integer id;
 		@Column(name = "empId")
 		private Integer empId ;
+		@Column(name = "employee_name")
+		private String name;
+		private Integer tic_Id;
+		private Integer timelogged;
+		private String description;
+		
 		public Integer getId() {
 			return id;
 		}
 		public void setId(Integer id) {
 			this.id = id;
+		
 		}
 		public Integer getEmpId() {
 			return empId;
@@ -53,10 +60,6 @@ public class Timesheet {
 		public void setDescription(String description) {
 			this.description = description;
 		}
-		@Column(name = "employee_name")
-		private Integer tic_Id;
-		private String name;
-		private Integer timelogged;
-		private String description;
+		
 
 }

@@ -8,4 +8,6 @@ public interface RegistrationService {
 	
 	public ResponseEntity<UserRegistration> saveUser(UserRegistration registration);
 
+	UserRegistration getUserDetails(String email);
+
 }

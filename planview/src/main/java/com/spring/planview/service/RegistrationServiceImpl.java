@@ -20,4 +20,12 @@ public class RegistrationServiceImpl implements RegistrationService {
 		return registrationDao.saveUser(registration);
 	}
 
+	@Override
+	public UserRegistration getUserDetails(String email) {
+		return registrationDao.getUserDetails(email);
+		
+	}
+	
+	
+
 }

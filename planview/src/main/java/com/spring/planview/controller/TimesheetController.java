@@ -1,5 +1,7 @@
 package com.spring.planview.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,23 @@ public class TimesheetController {
 	TimesheetService timesheetService;
 
 	@RequestMapping(value="/timesheet" , method=RequestMethod.POST,consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE})
-	public @ResponseBody ResponseEntity<Timesheet> registerUser(@RequestBody Timesheet timesheetData)
+	
+	public @ResponseBody List<Timesheet> saveTimesheet(@RequestBody Timesheet timesheetData)
 	{
-		return timesheetService.saveUser(timesheetData);
+		return timesheetService.saveTimesheet(timesheetData);
+	}
+	
+	@RequestMapping(value="/timesheetList" , method=RequestMethod.GET,consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody List<Timesheet> getTimeSheetList() {
+		return timesheetService.getTimeSheetList();
+	}
+	
+	@RequestMapping(value="/update" , method=RequestMethod.POST,consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody ResponseEntity<Timesheet> updateTimeSheetDetails(@RequestBody Timesheet timesheetData) {
+		return timesheetService.updateTimeSheetDetails(timesheetData);
+	}
+	@RequestMapping(value="/delete" , method=RequestMethod.POST,consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE})
+	public @ResponseBody ResponseEntity<Timesheet> deleteTimeSheetDetails(@RequestBody Timesheet timesheetData) {
+		return timesheetService.deleteTimeSheetDetails(timesheetData);
 	}
 }
