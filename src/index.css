@@ -2,12 +2,159 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-}
-.app {
-  text-align: center;
+  font-size: 13px;
+  color: #333;
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#root, .app{
+  height: 100%;
+}
+
+.container{
+  width: 100%;
+  padding: 0 30px;
+  /* position: relative; */
+  height: 100vh;
+  padding-top: 100px;
+}
+
+.form-control{
+  padding: 15px 0;
+  border:none;
+  border-bottom:1px solid #ccc;
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 14px;
+  background:transparent;
+}
+
+*:focus{
+  outline: none;
+  border-bottom:1px solid #004a93;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+h2{
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+a{
+  text-decoration: none;
+}
+
+.btn{
+  background: #004a93;
+  padding: 15px 30px;
+  color: #fff;
+  font-size: 15px;
+  border:none;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.btn.full-width{
+  width: 100%;
+}
+
+.btn.no-bg{
+  background: transparent;
+  color: #004a93;
+}
+
+
+.btn.outline{
+  background: #fff;
+  border:1px solid #004a93;
+  color: #004a93;
+  
+}
+
+.btn.text{
+  background: none;
+  color: #004a93;
+  font-size: 13px;
+  padding-left: 0;
+}
+
+.btn.text span{
+  color: #004a93;
+}
+a.btn.text{
+  color:#333;
+}
+
+.box-1{
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 40px 30px;
+  width: 500px;
+  margin: auto;
+  height: 450px;
+  position: absolute;
+  left: 50%;
+  margin-left: -250px;
+  top: 50%;
+  margin-top: -225px;
+
+}
+
+.info{
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 35px;
+  text-align: center;
+  
+}
+
+table{
+  width: 100%;
+}
+
+.margin25{
+  margin-left:20%;
+
+}
+
+textarea{
+  height: 150px;
+}
+
+
+
+.col-4{
+  float: left;
+  width: 20%;
+  margin-right:5%;
+}
+
+.col-12{
+  float: left;
+  width: 80%;
+}
+
+table{
+  margin-top: 50px;
+}
+
+table td{
+  padding: 15px;
+  text-align: left;
+}
+
+table th{
+  text-transform: uppercase;
+  border-bottom:2px solid #ddd;
+  padding: 15px 15px 35px 15px;
+  text-align: left;
 }

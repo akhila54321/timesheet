@@ -1,0 +1,38 @@
+
+
+.sidebar{    
+    background: #f1f1f1;
+    height: 100%;
+    /* -webkit-box-shadow: 8px 0px 10px 0px #e3ebf1; */
+    /* box-shadow: 8px 0px 10px 0px #e3ebf1; */
+    /* width: 100%; */
+    float: left;
+    position: fixed;
+    width: 15%;
+    padding: 80px 20px;
+    top: 50px;
+    left: 0;
+}
+
+.list ul{
+    padding: 0;
+    margin: 0
+
+}
+
+.list li{
+    
+    list-style: none;
+    text-align: left;
+    width: 100%;
+
+}
+
+.list a{
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    float: left;
+}

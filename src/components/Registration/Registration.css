@@ -1,32 +1,29 @@
-.form-group-registration{
-  display: inline-table;
-  margin: 25px;
-  background-color:grey;
-  height: 200px;
-  width:200px;
-  padding: 20px;
-
-  
-  
-}
-.btn{
-  background-color:blue;
-  color: white;
-  text-align: right;
-}
-.heading-registration{
-  color: black;
-    text-shadow: 2px 2px 4px #000000;
-    
-    
-
+.wrap-registration{
+  padding-top: 0px;
 }
 
-.Registration{
-  
-  border: 1px solid black; 
-  height: 500px;
-  width: 500px;
+.wrap-registration h2{
   text-align: center;
-  background-color:LightGray;
+}
+
+.registration.box-1{
+  height: 550px;
+  margin-top: -250px;
+  padding: 0;
+  border: none;
+  float: right;
+  right: 20%;
+  left: auto;
+  background: transparent;
+}
+
+.thumb-register{
+  position: fixed;
+  left: 0;
+  width: 40%;
+  overflow: hidden;
+}
+
+.thumb-register img{
+  width: 100%;
 }

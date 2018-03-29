@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link,Redirect } from 'react-router-dom';
+import logo from '../../images/logo.png';
 import './Login.css';
 
 class Login extends Component{
@@ -17,7 +18,6 @@ class Login extends Component{
 	    if (this.state.email === '' || this.state.password =='') {
     	  return;
     	}
-
  		fetch('/login', {
   		method: 'POST',
   		headers: {
@@ -42,17 +42,22 @@ class Login extends Component{
 
 		return(
 	
-			<div id="container" className="container">
-			<form className="login-form">
-				<h2 id="heading" className="btn btn-lg btn-primary btn-block">Plan View Login</h2>
-				<input type="email" onChange={event =>this.setState({email:event.target.value})} className="form-control" id="inputemail" placeholder="Email Id" required autoFocus />
-				<input type="password" onChange={event => this.setState({password:event.target.value})} className="form-control" id="inputpassword" placeholder="Password" required  />
-				<div id="button-align">
-				<input type="button" className="btn btn-lg btn-primary btn-block" onClick={(event) => {this.handleLogin(event)}} value="Login" />
-				<Link to={'/Registration'}> sign up? </Link>
-				
+			<div id="container" className="container wrap-login">
+				<div className="login-form box-1">
+				<div className="wrap-logo">
+				<img src={logo} className="logo" />
 				</div>
-			</form>
+					<form >
+						<h2>Log your Effort</h2>
+						<input type="email"  className="form-control" id="inputemail" placeholder="Email Id" required autoFocus />
+						<input type="password" onChange={event => this.setState({password:event.target.value})} className="form-control" id="inputpassword" placeholder="Password" required  />
+						<div id="button-align">
+						<input type="button" className="btn" onClick={(event) => {this.handleLogin(event)}} value="Login" />
+						<Link className="btn text" to={'/Registration'}> If you are new member! <span>Register Here </span> </Link>
+						
+						</div>
+					</form>
+				</div>
 			</div>
 		
 			);

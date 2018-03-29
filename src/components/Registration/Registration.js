@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
 import './Registration.css';
-import {Redirect} from 'react-router-dom';
+import sideImg from '../../images/register.jpeg';
+import {Link,Redirect } from 'react-router-dom';
 
 class Registration extends Component {
   constructor(props){
-    super(props);
-    //this.onChange = this.onChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    
-    this.state = {
-      name: '',
-      empId: '',
-      email: '',
-      password: '',
-      redirect: false
-      
+    super(props);    
+    this.handleClick = this.handleClick.bind(this);    
+    this.state = {      
+      redirect: false      
     }
   } 
   
-
-
-
-
 handleClick(event) {
   
   let name = this.refs.name2.value;
@@ -32,10 +22,7 @@ handleClick(event) {
     alert('passwords incorrect');
     return false;
   } 
-  else {
-    //alert('passwords match');
-    //return true 
-  }
+ 
   if(name.match(/^[A-Za-z]+$/)){
     //alert('valid user');
     //return true
@@ -60,9 +47,8 @@ handleClick(event) {
       password:this.state.password,
      
     }),
-}).then((response) => { 
-   alert(response.status);
-    if(response.status === 200){
+}).then((response) => {    
+    if(response.status === 404){
       console.log("Registration Successful");
       this.state.redirect = true;
 
@@ -86,11 +72,15 @@ handleClick(event) {
     }
 
     return (
-      
-      <div className="Registration">
-        <h1 className="heading-registration">Registration Form</h1>
+      <div className="container wrap-registration">
+      <div className='thumb-register'>
+        <img src={sideImg} />
+      </div>
+      <div className="registration box-1">
+        <h2>Register here</h2>
+        <p className="info">All the fields are mandatory for fill</p>
          <form id="validation" method="POST" action=" ">
-        <div className="form-group-registration">
+        
         <input className="form-control" type="text" placeholder="Name" onChange={event => this.setState({name: event.target.value})} name="name1" ref="name2" required /><pre></pre>
         
         <input className="form-control" type="text" placeholder="EmployeeID" onChange={event => this.setState({empId: event.target.value})} required name="employeeId"/><pre></pre>
@@ -98,11 +88,13 @@ handleClick(event) {
         <input className="form-control" type="password" ref="pswd1" placeholder="password" onChange={event => this.setState({password: event.target.value})} required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1"/><pre></pre>
         <input className="form-control" type="password" ref="pswd2" placeholder="confirm password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"/><pre></pre>
         
-        <button className="btn btn-primary" onClick={(event) => {this.handleClick(event)}}>Submit</button>
+        <button className="btn full-width" onClick={(event) => {this.handleClick(event)}}>Submit</button>
+        <Link className="btn text" to={'/'}> Already a Member <span>Login Here </span> </Link>
 
 
-      </div>
+      
       </form>
+      </div>
       </div>
     )
   }

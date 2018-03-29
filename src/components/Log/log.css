@@ -1,17 +1,30 @@
-body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 13px;
+.logs h3{
+    text-align: left;
 }
 
-table{
-    width:100%;
-    font-size: 13px;
-}
-table th, table td{
-    padding: 10px;
-    border:1px solid #ccc;
+.logs{
+    padding-top: 40px;
 }
 
-input[type="text"], input[type="date"] {
-    padding: 10px;
+.log-effort {
+    padding: 0;
+}
+
+.log-effort li {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    float: left;
+    width: 100%;
+}
+
+.log-effort label {
+    float: left;
+    width: 40%;
+    margin-top: 20px;
+}
+
+.log-effort .form-control {
+    float: left;
+    width: 60%;
 }

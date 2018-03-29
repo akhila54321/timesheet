@@ -1,6 +1,9 @@
 import React from 'react';
 import './log.css';
 
+import {Sidebar} from '../Sidebar/Sidebar';
+import {Header} from '../Header/Header';
+
 
 export class Log extends React.Component{
     constructor(){
@@ -47,40 +50,53 @@ export class Log extends React.Component{
 
     render(){
         return(
-            <form ref="resetFn" onSubmit={(e)=> {this.LogSubmitFn(e)}}>
-                <table>
-                <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Project</th>
-                            <th>Task</th>
-                            <th>Description</th>
-                            <th>Time Log</th>
-                            <th></th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                        <tr >
-                            <td><input type="date" ref="date" placeholder="Date" /></td>
-                            <td>
-                                <select ref="project" width="200px">
+            <div>
+                <Header />
+            <div className = "container">
+            <div class="col-4">
+            <Sidebar />
+            </div>
+            
+
+            <div class="col-12 margin25 logs">
+            <form ref="resetFn" onSubmit={(e)=> {this.LogSubmitFn(e)}} >
+            <h2>Add your efforts</h2>
+            <ul class="log-effort">
+                <li>
+                    <label>Date</label>
+                    <input className ="form-control" type="date" ref="date" placeholder="Date" />
+                </li>
+
+                <li>
+                    <label>Project</label>
+                    <select className ="form-control"  ref="project" width="200px">
                                     <option>Select</option>
                                     <option>Project 1</option>
                                     <option>Project 2</option>
                                 </select>
-                            </td>
-                            <td> <input type="text" ref="task" placeholder="Task" /> </td>
-                            <td><input type="text" ref="des" placeholder="Description" /></td>
-                            <td><input type="text" ref="logs" placeholder="Time Log" /></td>
-                            <td ref="demo"><button onClick={this.LogSubmitFn.bind(this)}>Save</button></td>                            
-                        </tr>
-                    
-                    </tbody>
-                </table>
-                <h3>History</h3>
-                <table>
+                </li>
+
+                <li>
+                    <label>Task</label>
+                    <input className ="form-control"  type="text" ref="task" placeholder="Task" />
+                </li>
+
+                 <li>
+                    <label>Description</label>
+                    <textarea className ="form-control"  type="text" ref="des" placeholder="Description" />
+                </li>
+
+                <li>
+                    <label>Time Log</label>
+                    <input className ="form-control"   type="text" ref="logs" placeholder="Time Log" />
+                </li>
+
+                <li>
+                <button onClick={this.LogSubmitFn.bind(this)} className="btn">Save</button>
+                </li>
+            </ul>
+                {/* <h3>History</h3> */}
+                {/* <table>
                 <thead>
                         <tr>
                             <th>Date</th>
@@ -106,8 +122,13 @@ export class Log extends React.Component{
                         </tr> 
                         ))}                          
                     </tbody>                       
-                </table>                  
+                </table>                   */}
             </form>
+            </div>
+
+            
+            </div>
+            </div>
         );
     }
 }
