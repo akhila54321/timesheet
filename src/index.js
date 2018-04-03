@@ -4,7 +4,6 @@ import './index.css';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import {Log} from './components/Log/Log';
-import {Home} from './components/Home/Home';
 import {LogDetail} from './components/Log/LogDetail';
 
 
@@ -16,7 +15,6 @@ render((<BrowserRouter>
       
       <Route exact path ='/' component={Login}/>
       <Route exact path ='/registration' component={Registration}/>
-      <Route exact path ='/home' component={Home}/>
       <Route exact path ='/log' component={Log}/>
       <Route exact path ='/logdetail' component={LogDetail}/>
       

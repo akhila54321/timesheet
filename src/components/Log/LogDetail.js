@@ -32,9 +32,11 @@ export class LogDetail extends React.Component{
       let btncancel = document.getElementsByClassName('btn text cancel'+index);
       if(btn[0].value === "Edit"){
         btn[0].value= "save";
-        btn[0].disabled = true;
         btncancel[0].value="cancel";
       }else{
+        for(let i=0;i<t.length;i++)
+          if(t[i].value==='')
+             return false;
          fetch('/edit',{
               method:'POST',
               headers: {            
@@ -51,7 +53,7 @@ export class LogDetail extends React.Component{
 
             })
         }).then((response) => { console.log(response.status);
-        if(response.status === 404){
+        if(response.status === 200){
            let newdata ={
             "gender": t[0].value,
             "Date" :t[1].value,
@@ -76,12 +78,20 @@ export class LogDetail extends React.Component{
     }
     handleDelete(index,e){
       e.preventDefault();
+      var t=document.getElementsByClassName('form-control ' + index);
       let btncancel = document.getElementsByClassName('btn text cancel'+index);
+      let btn = document.getElementsByClassName('btn text '+index);
       if(btncancel[0].value==="cancel"){
-           
+
+          this.refs.resetFn.reset();
+           btn[0].value="Edit";
+           btncancel[0].value="Delete";
+           for(let i=0;i<t.length;i++){
+                  t[i].disabled = true;
+            } 
+          return; 
       }
       let url='https://randomuser.me/api/?results='+index;
-      alert(url);
       fetch(url,{
             method:'DELETE',
             }).then((response) => { console.log(response.status);
@@ -91,7 +101,7 @@ export class LogDetail extends React.Component{
             alert("status code:"+response.status);
            }
          });
-            alert(index);
+            
             let newRows = this.state.data.slice(0,index);
             newRows= newRows.concat(this.state.data.slice(index+1));
             this.setState({data:newRows});
@@ -127,10 +137,10 @@ export class LogDetail extends React.Component{
                   this.state.data.map((details,index)=>
                     <tr key={details.email}>
                       <td><input className={'form-control ' + index} type="text" defaultValue={details.gender} disabled required/></td>
-                      <td><input className={'form-control ' + index} type="date" name="Date" defaultValue={details.Date}disabled /></td> 
-                      <td><input className={'form-control ' + index} type="text" name="Description" defaultValue={details.email} disabled /></td> 
-                      <td><input className={'form-control ' + index} type="text" name="TicketID" defaultValue={details.registered} disabled /></td> 
-                      <td><input className={'form-control ' + index} type="text" name="Time" defaultValue={details.phone} disabled/></td> 
+                      <td><input className={'form-control ' + index} type="date" name="Date" defaultValue={details.Date} disabled required/></td> 
+                      <td><input className={'form-control ' + index} type="text" name="Description" defaultValue={details.email} disabled required /></td> 
+                      <td><input className={'form-control ' + index} type="text" name="TicketID" defaultValue={details.registered} disabled required  /></td> 
+                      <td><input className={'form-control ' + index} type="text" name="Time" defaultValue={details.phone} disabled required pattern ="[0-8]+$" /></td> 
                       <td><input className={'btn text '+index} type="submit" onClick={(event)=>this.handleEdit(index,event)} value="Edit"/></td>
                       <td><input type="button" className={'btn text cancel'+index} onClick={(event)=>this.handleDelete(index,event)} value="Delete"/></td>
                     </tr>

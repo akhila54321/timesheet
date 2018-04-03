@@ -15,8 +15,13 @@ class Login extends Component{
  	handleLogin(event){
  		event.preventDefault();
 	   
-	    if (this.state.email === '' || this.state.password =='') {
-    	  return;
+	    if (this.state.email === '' ){
+	    	alert('Email must be filled out');
+	    	return false;
+	    }
+	    if(this.state.password ==='') {
+	    	alert('Password cannot be empty');
+    	  return false;
     	}
  		fetch('/login', {
   		method: 'POST',
@@ -47,12 +52,12 @@ class Login extends Component{
 				<div className="wrap-logo">
 				<img src={logo} className="logo" />
 				</div>
-					<form >
+					<form id="validation" method="POST" action=" " >
 						<h2>Log your Effort</h2>
-						<input type="email"  className="form-control" id="inputemail" placeholder="Email Id" required autoFocus />
-						<input type="password" onChange={event => this.setState({password:event.target.value})} className="form-control" id="inputpassword" placeholder="Password" required  />
+						<input type="email" className="form-control" onChange={event =>this.setState({email:event.target.value})} placeholder="Email Id" required autoFocus />
+						<input type="password" onChange={event => this.setState({password:event.target.value})} className="form-control" placeholder="Password" required  />
 						<div id="button-align">
-						<input type="button" className="btn" onClick={(event) => {this.handleLogin(event)}} value="Login" />
+						<button type="submit" className="btn" onClick={(event) => {this.handleLogin(event)}} >Login</button>
 						<Link className="btn text" to={'/Registration'}> If you are new member! <span>Register Here </span> </Link>
 						
 						</div>
