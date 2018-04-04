@@ -9,10 +9,10 @@ export class Sidebar extends React.Component{
             <aside className="list sidebar">
                 <ul>
                     <li>
-                        <a href="#">Add Time Log</a>
+                        <a href="/log">Add Time Log</a>
                     </li>
                     <li>
-                        <a href="#">View Timelog</a>
+                        <a href="/logdetail">View Timelog</a>
                     </li>
                 </ul>
             </aside>

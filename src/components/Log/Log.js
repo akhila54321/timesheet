@@ -22,7 +22,8 @@ export class Log extends React.Component{
         let description = this.refs.des.value;
         let task = this.refs.task.value;
         let logs = this.refs.logs.value;   
-
+        if(proDate===''||project===''||description===''||task===''||logs==='')
+            return false;
         fetch('/log',{
             method:'POST',
             headers: {            
@@ -64,13 +65,13 @@ export class Log extends React.Component{
             <ul class="log-effort">
                 <li>
                     <label>Date</label>
-                    <input className ="form-control" type="date" ref="date" placeholder="Date" />
+                    <input className ="form-control" type="date" ref="date" placeholder="Date" required/>
                 </li>
 
                 <li>
                     <label>Project</label>
-                    <select className ="form-control"  ref="project" width="200px">
-                                    <option>Select</option>
+                    <select className ="form-control"  ref="project" width="200px" required>
+                                    
                                     <option>Project 1</option>
                                     <option>Project 2</option>
                                 </select>
@@ -78,17 +79,17 @@ export class Log extends React.Component{
 
                 <li>
                     <label>Task</label>
-                    <input className ="form-control"  type="text" ref="task" placeholder="Task" />
+                    <input className ="form-control"  type="text" ref="task" placeholder="Task" required/>
                 </li>
 
                  <li>
                     <label>Description</label>
-                    <textarea className ="form-control"  type="text" ref="des" placeholder="Description" />
+                    <textarea className ="form-control"  type="text" ref="des" placeholder="Description"required />
                 </li>
 
                 <li>
                     <label>Time Log</label>
-                    <input className ="form-control"   type="text" ref="logs" placeholder="Time Log" />
+                    <input className ="form-control"   type="text" ref="logs" placeholder="Time Log" required/>
                 </li>
 
                 <li>
